@@ -1,7 +1,15 @@
 {
   "name": "ipo",
   "version": "1.0.0",
-  "description": "Interpolation curves",
+  "description": "easing library allowing to describe complex easings in JSON",
+  "tags": [
+    "easing",
+    "bezier",
+    "curve",
+    "ipo",
+    "interpolation",
+    "animation"
+  ],
   "main": "src/index.js",
   "author": "Gaëtan Renaudeau",
   "license": "ISC",
