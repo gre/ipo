@@ -1,0 +1,15 @@
+{
+  "name": "ipo",
+  "version": "1.0.0",
+  "description": "Interpolation curves",
+  "main": "src/index.js",
+  "author": "Gaëtan Renaudeau",
+  "license": "ISC",
+  "dependencies": {
+    "bezier-easing": "1.1.x",
+    "invariant": "2.1.0"
+  },
+  "devDependencies": {
+    "eslint": "latest"
+  }
+}
