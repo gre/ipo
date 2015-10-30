@@ -5,13 +5,13 @@ var IPO = require(".");
 document.body.style.background = "black";
 
 var ipo = IPO([
-  { "p": [100, 100], "sup": [10, 20] },
-  { "p": [200, 190], "inf": [-10, 0], "sup": [10, 0] },
-  { "p": [250, 100], "sup": [30, 0] },
+  { "p": [100, 100], "upper": [10, 20] },
+  { "p": [200, 190], "lower": [-10, 0], "upper": [10, 0] },
+  { "p": [250, 100], "upper": [30, 0] },
   { "p": [280, 140] },
   { "p": [350, 160] },
-  { "p": [400, 50], "inf": [-50, 40], "sup": [100, 0] },
-  { "p": [600, 250], "inf": [-140, 0], "sup": [ 40, -40 ] }
+  { "p": [400, 50], "lower": [-50, 40], "upper": [100, 0] },
+  { "p": [600, 250], "lower": [-140, 0], "upper": [ 40, -40 ] }
 ]);
 
 // Quick draw in SVG
@@ -30,7 +30,7 @@ svg += "<path fill='none' stroke-width='2' stroke='#f00' d='";
 var i, p, point, prev = ipo.points[0];
 for (i = 1; i < ipo.points.length; i++) {
   point = ipo.points[i];
-  svg += " M "+project(prev.p)+" C"+project(addPoints(prev.p, prev.sup||[0,0]))+" "+project(addPoints(point.p, point.inf||[0,0]))+" "+project(point.p);
+  svg += " M "+project(prev.p)+" C"+project(addPoints(prev.p, prev.upper||[0,0]))+" "+project(addPoints(point.p, point.lower||[0,0]))+" "+project(point.p);
   prev = point;
 }
 svg += "' />";
@@ -41,7 +41,7 @@ for (i = 0; i < ipo.points.length; i++) {
   p = project(point.p);
   var clr = "#f00";
   svg += "<circle cx='"+p[0]+"' cy='"+p[1]+"' r='3' fill='"+clr+"' />";
-  [point.inf, point.sup].filter(function (o) { return o; }).map(function (handle) {
+  [point.lower, point.upper].filter(function (o) { return o; }).map(function (handle) {
     handle = project(addPoints(handle, point.p));
     var d = "M "+p+" L"+handle;
     svg += "<path stroke='"+clr+"' d='"+d+"' />";

@@ -10,8 +10,8 @@ module.exports = function (points) {
     var b = point.p;
     var w = b[0] - a[0];
     var h = b[1] - a[1];
-    var left = prev.sup || [ 0, 0 ];
-    var right = point.inf || [ 0, 0 ];
+    var left = prev.upper || [ 0, 0 ];
+    var right = point.lower || [ 0, 0 ];
     if (!w || !h)
       beziers.push(null);
     else {
@@ -23,7 +23,7 @@ module.exports = function (points) {
         );
       }
       catch (e) {
-        invariant(false, "{sup,inf} for points["+(i-1)+".."+i+"]: "+e.message);
+        invariant(false, "{upper,lower} for points["+(i-1)+".."+i+"]: "+e.message);
       }
     }
     prev = point;

@@ -20,9 +20,9 @@ IPO.prototype = {
     }
     var pX = point.p[0];
     if (!prev || x > pX) {
-      // There is no 2 points to interpolate between, it is just point's y unless an inf/sup is defined,
+      // There is no 2 points to interpolate between, it is just point's y unless an lower/upper is defined,
       // in that case, we do a linear interpolation on edges.
-      var edge = x > pX && point.sup || x < pX && point.inf;
+      var edge = x > pX && point.upper || x < pX && point.lower;
       return point.p[1] + (edge && edge[1] !== 0 ? (x-pX) * edge[1] / edge[0] : 0);
     }
     var bezier = this._beziers[i - 1];

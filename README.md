@@ -11,13 +11,13 @@ Screenshot running [example.js](./example.js):
 
 ```json
 [
-  { "p": [100, 100], "sup": [10, 20] },
-  { "p": [200, 190], "inf": [-10, 0], "sup": [10, 0] },
-  { "p": [250, 100], "sup": [30, 0] },
+  { "p": [100, 100], "upper": [10, 20] },
+  { "p": [200, 190], "lower": [-10, 0], "upper": [10, 0] },
+  { "p": [250, 100], "upper": [30, 0] },
   { "p": [280, 140] },
   { "p": [350, 160] },
-  { "p": [400, 50], "inf": [-50, 40], "sup": [100, 0] },
-  { "p": [600, 250], "inf": [-140, 0], "sup": [ 40, -40 ] }
+  { "p": [400, 50], "lower": [-50, 40], "upper": [100, 0] },
+  { "p": [600, 250], "lower": [-140, 0], "upper": [ 40, -40 ] }
 ]
 ```
 
@@ -38,8 +38,8 @@ ipo.get(42); // Get the curve Y value at X=42
 
 - an Array of Point, where each Point is an object with
   - a position `p` which is a `[x, y]`
-  - (option) `inf`: relative position of a bezier handle for the inferior curve interpolation
-  - (option) `sup`: same for the superior curve interpolation.
+  - (option) `lower`: relative position of a bezier handle for the lower curve interpolation
+  - (option) `upper`: same for the upper curve interpolation.
 
 
 Under the hood
