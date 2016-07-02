@@ -1,15 +1,10 @@
 var checkPoints = require("./checkPoints");
 var computeBeziers = require("./computeBeziers");
 
-function IPO (points) {
-  if (!(this instanceof IPO)) return new IPO(points);
-  this.get = this.get.bind(this);
-  this.points = points;
-}
-
-IPO.prototype = {
-  get: function (x) {
-    var points = this._points;
+module.exports = function IPO (points) {
+  checkPoints(points);
+  var beziers = computeBeziers(points);
+  return function (x) {
     var prev, point, i;
     for (i=0; i<points.length; i++) {
       point = points[i];
@@ -25,27 +20,13 @@ IPO.prototype = {
       var edge = x > pX && point.upper || x < pX && point.lower;
       return point.p[1] + (edge && edge[1] !== 0 ? (x-pX) * edge[1] / edge[0] : 0);
     }
-    var bezier = this._beziers[i - 1];
+    var bezier = beziers[i - 1];
     if (!bezier) return prev.p[1]; // this happens when two following points have the same Y.
     var a = prev.p;
     var b = point.p;
     var w = b[0] - a[0];
     var h = b[1] - a[1];
     // Get the bezier's value and map it to the points' domain
-    return a[1] + h * bezier.get((x - a[0]) / w);
-  }
+    return a[1] + h * bezier((x - a[0]) / w);
+  };
 };
-
-Object.defineProperty(IPO.prototype, "points", {
-  get: function () {
-    return this._points;
-  },
-  set: function (points) {
-    checkPoints(points);
-    var beziers = computeBeziers(points);
-    this._points = points;
-    this._beziers = beziers;
-  }
-});
-
-module.exports = IPO;

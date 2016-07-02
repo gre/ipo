@@ -18,7 +18,7 @@ module.exports = function (points) {
       try {
         beziers.push(
           w && h ?
-          BezierEasing([ left[0] / w, left[1] / h, 1 + right[0] / w, 1 + right[1] / h ]) :
+          BezierEasing(left[0] / w, left[1] / h, 1 + right[0] / w, 1 + right[1] / h) :
           null // constant
         );
       }

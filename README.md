@@ -29,7 +29,7 @@ API
 ```js
 var IPO = require("ipo");
 var ipo = IPO([ ...points... ]);
-ipo.get(42); // Get the curve Y value at X=42
+ipo(42); // Get the curve Y value at X=42
 ```
 
 ### Format
