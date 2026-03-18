@@ -17,8 +17,8 @@
   "author": "Gaëtan Renaudeau",
   "license": "ISC",
   "dependencies": {
-    "bezier-easing": "2.0.x",
-    "invariant": "2.2.1"
+    "bezier-easing": "3.0.0",
+    "invariant": "2.2.4"
   },
   "devDependencies": {
     "eslint": "latest"
