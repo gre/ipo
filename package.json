@@ -11,6 +11,9 @@
     "animation"
   ],
   "main": "src/index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
   "author": "Gaëtan Renaudeau",
   "license": "ISC",
   "dependencies": {
