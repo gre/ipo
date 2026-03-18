@@ -1,6 +1,6 @@
 {
   "name": "ipo",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "easing library allowing to describe complex easings in JSON",
   "tags": [
     "easing",
