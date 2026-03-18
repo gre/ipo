@@ -21,12 +21,10 @@ module.exports = function IPO (points) {
       return point.p[1] + (edge && edge[1] !== 0 ? (x-pX) * edge[1] / edge[0] : 0);
     }
     var bezier = beziers[i - 1];
-    if (!bezier) return prev.p[1]; // this happens when two following points have the same Y.
+    if (!bezier) return prev.p[1];
     var a = prev.p;
     var b = point.p;
     var w = b[0] - a[0];
-    var h = b[1] - a[1];
-    // Get the bezier's value and map it to the points' domain
-    return a[1] + h * bezier((x - a[0]) / w);
+    return a[1] + bezier((x - a[0]) / w);
   };
 };
